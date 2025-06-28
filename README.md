@@ -9,9 +9,6 @@ A Notion-inspired web app for collecting, reviewing, and summarizing your favori
 - Fetches book covers from Open Library
 - Responsive and mobile-friendly
 
-## Screenshots
-![screenshot](screenshot.png)
-
 ## Getting Started
 
 ### Prerequisites
@@ -59,4 +56,4 @@ Visit [http://localhost:3000](http://localhost:3000)
 MIT
 
 ---
-Inspired by Notion and built by [Your Name].
+Inspired by Notion and built by Gabriel Janvrin.
