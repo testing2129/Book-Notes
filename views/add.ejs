@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Book Review</title>
+  <link rel="stylesheet" href="/public/notion.css">
+</head>
+<body>
+  <%- include('header') %>
+  <main>
+    <div class="notion-container">
+      <form action="/add" method="POST" autocomplete="off" class="notion-form">
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required>
+        </div>
+        <div>
+          <label for="author">Author:</label>
+          <input type="text" id="author" name="author" required>
+        </div>
+        <div>
+          <label for="release_date">Release Date:</label>
+          <input type="date" id="release_date" name="release_date" required>
+        </div>
+        <div>
+          <label for="review">Review:</label>
+          <textarea id="review" name="review" required></textarea>
+        </div>
+        <div>
+          <label for="rating">Rating (1-5):</label>
+          <input type="number" id="rating" name="rating" min="1" max="5" required>
+        </div>
+        <div>
+          <label for="pages">Pages:</label>
+          <input type="number" id="pages" name="pages" min="1" required>
+        </div>
+        <div>
+          <label for="impressions">Impressions:</label>
+          <textarea id="impressions" name="impressions" placeholder="Your overall thoughts, style, etc."></textarea>
+        </div>
+        <div>
+          <label for="notes">Summary / Notes:</label>
+          <textarea id="notes" name="notes" placeholder="Key takeaways, summary, or your notes"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </main>
+  <%- include('footer') %>
+</body>
+</html>

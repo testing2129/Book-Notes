@@ -1,0 +1,228 @@
+/* Notion-inspired theme for Book Notes web app */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@500;700&display=swap');
+body {
+  background: #f7f6f3;
+  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: rgb(54, 68, 66);
+  font-size: 15px;
+  line-height: 23px;
+  margin: 0;
+  padding: 0;
+}
+
+.notion-header {
+  background: #fff;
+  border-bottom: 1px solid #ececec;
+  padding: 1.2rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.notion-header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.notion-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff4545;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.notion-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+.notion-nav-link {
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.notion-nav-link:hover {
+  background: #f5f7fa;
+  color: #5b7cfa;
+}
+
+.notion-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(91,124,250,0.06);
+  padding: 2.5rem 2rem 2rem 2rem;
+}
+
+.notion-page {
+  border-bottom: 1px solid #ececec;
+}
+
+.notion-page:last-child {
+  border-bottom: none;
+}
+
+.notion-page-cover {
+  width: 100%;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin-bottom: 1.2rem;
+}
+
+.notion-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.notion-meta {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 1.2rem;
+}
+
+.notion-section {
+  margin-bottom: 1.2rem;
+}
+.notion-section h2 {
+  font-size: 1.2rem;
+  color: #fa5bbd;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.notion-review, .notion-notes {
+  background: #f7f6f3;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #222;
+}
+
+.notion-add-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  background: #5b7cfa;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(91,124,250,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.notion-add-btn:hover {
+  background: #222;
+  color: #fff;
+}
+
+.notion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.notion-form label {
+  font-weight: 600;
+  color: #5b7cfa;
+  margin-bottom: 0.3rem;
+}
+.notion-form input, .notion-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ececec;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f7f6f3;
+  margin-bottom: 0.2rem;
+  transition: border 0.2s;
+}
+.notion-form input:focus, .notion-form textarea:focus {
+  border: 1.5px solid #5b7cfa;
+  outline: none;
+}
+.notion-form button[type="submit"] {
+  background: #5b7cfa;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(91,124,250,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.notion-form button[type="submit"]:hover {
+  background: #222;
+  color: #fff;
+}
+
+.notion-footer {
+  padding: 1.2rem 0 0.7rem 0;
+}
+.footer-text {
+  color: #888;
+  font-family: 'Outfit', 'Inter', 'Manrope', sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+.notion-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+.notion-delete-btn {
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.notion-delete-btn:hover {
+  background: #d63031;
+}
+.notion-edit-btn {
+  background: #f5a623;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.notion-edit-btn:hover {
+  background: #b97a1a;
+}
+
+@media (max-width: 600px) {
+  .notion-container {
+    padding: 1rem 0.5rem;
+  }
+  .notion-header-content {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: flex-start;
+  }
+  .notion-title {
+    font-size: 1.3rem;
+  }
+  .notion-page-cover {
+    height: 120px;
+  }
+}

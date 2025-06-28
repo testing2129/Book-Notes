@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Reviews</title>
+  <link rel="stylesheet" href="/public/notion.css">
+</head>
+
+<body>
+  <%- include('header') %>
+  <main>
+    <div class="notion-container">
+      <% books.forEach(book => { %>
+        <div class="notion-page">
+          <% if (book.coverUrl) { %>
+            <div class="notion-page-cover" style="background-image: url('<%= book.coverUrl %>');"></div>
+          <% } %>
+          <div class="notion-title">
+            <%= book.title %>
+          </div>
+          <div class="notion-meta">
+            <span>by <strong
+                style="color:#5b7cfa;background:rgba(91,124,250,0.08);padding:2px 6px;border-radius:6px;">
+                <%= book.author %>
+              </strong></span>
+            <% if (book.release_date) { %>
+              | <span style="color:#f5a623;background:rgba(245,166,35,0.08);padding:2px 6px;border-radius:6px;">
+                Released: <%= book.release_date.toISOString().slice(0,10) %>
+              </span>
+            <% } %>
+            <% if (book.pages) { %>
+              | <span style="color:#00b894;background:rgba(0,184,148,0.08);padding:2px 6px;border-radius:6px;">
+                Pages: <%= book.pages %>
+              </span>
+            <% } %>
+            <% if (book.rating) { %>
+              | <span style="color:#b8007b;background:rgba(0,184,148,0.08);padding:2px 6px;border-radius:6px;">
+                Rating: <%= book.rating %>
+              </span>
+            <% } %>
+          </div>
+          <% if (book.impressions) { %>
+            <div class="notion-section">
+              <h2>Impressions</h2>
+              <% 
+                // Split on lines that start with a number and a dot (e.g., 1. ...)
+                const items = book.impressions.split(/\n(?=\d+\. )/);
+                if (items.length > 1) {
+              %>
+                <ol>
+                  <% items.forEach(function(item) { %>
+                    <li><%- item.replace(/^\d+\.\s*/, '' ) %></li>
+                  <% }) %>
+                </ol>
+              <% } else { %>
+                <div class="notion-notes">
+                  <%= book.impressions %>
+                </div>
+              <% } %>
+            </div>
+          <% } %>
+          <div class="notion-section">
+            <h2>Review</h2>
+            <div class="notion-review">
+              <%= book.review %>
+            </div>
+          </div>
+          <% if (book.notes) { %>
+            <div class="notion-section">
+              <h2>Summary & Notes</h2>
+              <div class="notion-notes">
+                <%- marked(book.notes || '' ) %>
+              </div>
+            </div>
+          <% } %>
+          <div class="notion-actions" style="margin-bottom:1.2rem;">
+            <form action="/delete/<%= book.id %>" method="POST" style="display:inline;">
+              <button type="submit" class="notion-delete-btn"
+                onclick="return confirm('Delete this book?')">Delete</button>
+            </form>
+            <a href="/edit/<%= book.id %>" class="notion-edit-btn">Edit</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </main>
+  <%- include('footer') %>
+</body>
+
+</html>
