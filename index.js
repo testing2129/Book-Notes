@@ -31,30 +31,40 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
 
 // Home page: list all books
-app.get('/', async (req, res) => {
-  const result = await pool.query('SELECT * FROM books ORDER BY release_date DESC');
-  const booksWithCovers = await Promise.all(result.rows.map(async (book) => {
-    let coverUrl = null;
-    try {
-      // Search Open Library for the book by title and author
-      const response = await axios.get('https://openlibrary.org/search.json', {
-        params: { title: book.title, author: book.author, limit: 1 }
-      });
-      const doc = response.data.docs[0];
-      if (doc && doc.cover_i) {
-        coverUrl = `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`;
-        await pool.query(
-          'UPDATE books SET cover_url = $1 WHERE id = $2',
-          [coverUrl, book.id]
-        );
-      };
-    } catch (err) {
-      console.log(err);
-      coverUrl = null;
-    }
-    return { ...book, coverUrl };
-  }));
-  res.render('index', { books: booksWithCovers, marked });
+app.get('/', async (_, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM books ORDER BY release_date DESC');
+    const booksWithCovers = await Promise.all(result.rows.map(async (book) => {
+      let coverUrl = book.cover_url || null;
+      if (coverUrl === null || coverUrl === undefined || coverUrl === '') {
+        try {
+          // Search Open Library for the book by title and author
+          const response = await axios.get('https://openlibrary.org/search.json', {
+            params: { title: book.title, author: book.author, limit: 1 }
+          });
+          const doc = response.data.docs[0];
+          if (doc && doc.cover_i) {
+            coverUrl = `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`;
+            await pool.query(
+              'UPDATE books SET cover_url = $1 WHERE id = $2',
+              [coverUrl, book.id]
+            );
+            // Fetch the updated book to get the new cover_url
+            const updatedBook = await pool.query('SELECT * FROM books WHERE id = $1', [book.id]);
+            coverUrl = updatedBook.rows[0].cover_url;
+          }
+        } catch (err) {
+          console.log(err);
+          coverUrl = null;
+        }
+      }
+      return { ...book, coverUrl };
+    }));
+    res.render('index', { books: booksWithCovers, marked });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
 });
 
 // Add book form
