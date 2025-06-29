@@ -10,14 +10,20 @@ import ejs from 'ejs';
 const app = express();
 const port = process.env.PORT || 3000; // Use environment port for deployment
 
-// PostgreSQL connection pool
-const pool = new Pool({
-  user: process.env.PGUSER || 'reviewer',
-  host: process.env.PGHOST || 'localhost',
-  database: process.env.PGDATABASE || 'book_reviews',
-  password: process.env.PGPASSWORD || 'password',
-  port: process.env.PGPORT || 5432,
-});
+// Use DATABASE_URL for cloud deployment (e.g., Render)
+const connectionString = process.env.DATABASE_URL;
+const pool = connectionString
+  ? new Pool({
+    connectionString,
+    ssl: { rejectUnauthorized: false } // required for Render's Postgres
+  })
+  : new Pool({
+    user: process.env.PGUSER || 'reviewer',
+    host: process.env.PGHOST || 'localhost',
+    database: process.env.PGDATABASE || 'book_reviews',
+    password: process.env.PGPASSWORD || 'password',
+    port: process.env.PGPORT || 5432,
+  });
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');

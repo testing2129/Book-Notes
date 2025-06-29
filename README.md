@@ -18,7 +18,7 @@ A Notion-inspired web app for collecting, reviewing, and summarizing your favori
 ### Installation
 1. Clone this repository:
    ```sh
-   git clone https://github.com/yourusername/book-notes.git
+   git clone https://github.com/testing2129/book-notes.git
    cd book-notes
    ```
 2. Install dependencies:
@@ -52,8 +52,6 @@ Visit [http://localhost:3000](http://localhost:3000)
 - Ready for Render, Railway, Fly.io, Heroku, or any Node.js host
 - Set environment variables for your production database
 
-## License
-MIT
 
 ---
 Inspired by Notion and built by Gabriel Janvrin.
