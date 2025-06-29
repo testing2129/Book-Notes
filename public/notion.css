@@ -72,6 +72,21 @@ body {
     flex-direction: column;
     gap: 0.7rem;
     align-items: flex-start;
+    width: 100%;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    box-sizing: border-box;
+  }
+  .notion-nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+  }
+  .notion-nav-link {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
   }
   .notion-title {
     font-size: 1.3rem;
