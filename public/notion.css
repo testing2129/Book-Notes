@@ -65,8 +65,8 @@ body {
 
 @media (max-width: 600px) {
   .notion-container {
-    margin: 0.7rem 0.3rem;
-    padding: 0.7rem 0.3rem;
+    margin: 0.7rem 0.7rem;
+    padding: 0.7rem 0.7rem;
   }
   .notion-header-content {
     flex-direction: column;
