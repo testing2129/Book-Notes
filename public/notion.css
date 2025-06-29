@@ -64,17 +64,22 @@ body {
 }
 
 @media (max-width: 600px) {
-  .notion-container {
-    margin: 0.7rem 0.7rem;
-    padding: 0.7rem 0.7rem;
+  body {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .notion-header {
+    border-radius: 12px;
+    margin: 0.5rem 0.2rem 1.2rem 0.2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   }
   .notion-header-content {
     flex-direction: column;
     gap: 0.7rem;
     align-items: flex-start;
     width: 100%;
-    padding-left: 0.3rem;
-    padding-right: 0.3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     box-sizing: border-box;
   }
   .notion-nav {
@@ -85,14 +90,26 @@ body {
     margin-right: 0.1rem;
   }
   .notion-nav-link {
-    padding-left: 0.7rem;
-    padding-right: 0.7rem;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    font-size: 1.05rem;
+  }
+  .notion-container {
+    margin: 0.9rem 0.7rem 1.2rem 0.7rem;
+    padding: 0.9rem 0.7rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(91,124,250,0.10);
   }
   .notion-title {
     font-size: 1.3rem;
+    margin-top: 0.5rem;
   }
   .notion-page-cover {
-    height: 120px;
+    height: 110px;
+    border-radius: 8px;
+  }
+  .notion-section {
+    margin-bottom: 1.1rem;
   }
 }
 
