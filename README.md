@@ -52,6 +52,8 @@ Visit [http://localhost:3000](http://localhost:3000)
 - Ready for Render, Railway, Fly.io, Heroku, or any Node.js host
 - Set environment variables for your production database
 
+## License
+MIT
 
 ---
 Inspired by Notion and built by Gabriel Janvrin.
