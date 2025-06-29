@@ -266,3 +266,126 @@ body {
 .notion-edit-btn:hover {
   background: #b97a1a;
 }
+
+.notion-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  z-index: 1001;
+}
+.notion-nav-toggle-bar {
+  width: 26px;
+  height: 3px;
+  background: #5b7cfa;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.notion-nav-toggle.active .notion-nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.notion-nav-toggle.active .notion-nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.notion-nav-toggle.active .notion-nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+@media (max-width: 600px) {
+  .notion-nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 1.2rem;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(91,124,250,0.13);
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 0;
+    min-width: 140px;
+    z-index: 1000;
+    padding: 0.7rem 0.5rem;
+  }
+  .notion-nav.nav-open {
+    display: flex;
+  }
+  .notion-nav-link {
+    padding: 0.8rem 1.2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    margin: 0.2rem 0;
+    width: 100%;
+    text-align: left;
+  }
+  .notion-nav-toggle {
+    display: flex;
+  }
+}
+
+.notion-style-menu-wrapper {
+  position: relative;
+  margin-left: 1.2rem;
+}
+.notion-style-menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+  padding: 8px 6px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.notion-style-menu-btn:hover {
+  background: #f5f7fa;
+}
+.notion-style-dot {
+  width: 5px;
+  height: 5px;
+  background: #888;
+  border-radius: 50%;
+  display: block;
+}
+.notion-style-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 2.2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  min-width: 170px;
+  z-index: 100;
+  padding: 0.5rem 0;
+}
+.notion-style-menu.open {
+  display: block;
+}
+.notion-style-option {
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+  transition: background 0.18s;
+}
+.notion-style-option:hover {
+  background: #f5f7fa;
+  color: #5b7cfa;
+}
+@media (max-width: 600px) {
+  .notion-style-menu-wrapper {
+    margin-left: 0.5rem;
+  }
+  .notion-style-menu {
+    right: 0;
+    left: auto;
+    min-width: 140px;
+  }
+}
