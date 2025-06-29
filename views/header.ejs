@@ -1,20 +1,15 @@
 <header class="notion-header">
   <div class="notion-header-content">
     <a href="/" class="notion-logo">📚 Book Notes</a>
-    <nav class="notion-nav d-none d-md-flex" id="notionNav">
+    <button class="notion-nav-toggle" id="navToggle" aria-label="Open navigation menu">
+      <span class="notion-nav-toggle-bar"></span>
+      <span class="notion-nav-toggle-bar"></span>
+      <span class="notion-nav-toggle-bar"></span>
+    </button>
+    <nav class="notion-nav" id="notionNav">
       <a href="/" class="notion-nav-link">Home</a>
       <a href="/add" class="notion-nav-link">Add Review</a>
     </nav>
-    <!-- Bootstrap Hamburger Dropdown for Mobile -->
-    <div class="dropdown d-md-none">
-      <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 1rem;">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="/">Home</a></li>
-        <li><a class="dropdown-item" href="/add">Add Review</a></li>
-      </ul>
-    </div>
     <div class="notion-style-menu-wrapper">
       <button class="notion-style-menu-btn" id="styleMenuBtn" aria-label="Change font style">
         <span class="notion-style-dot"></span>
@@ -59,5 +54,49 @@
         styleMenu.classList.remove('open');
       });
     });
+
+    // Navigation toggle
+    const navToggle = document.getElementById('navToggle');
+    const notionNav = document.getElementById('notionNav');
+    navToggle.addEventListener('click', function() {
+      notionNav.classList.toggle('open');
+    });
   });
 </script>
+<style>
+  .notion-nav-toggle {
+    display: none;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .notion-nav-toggle-bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: all 0.3s;
+  }
+  .notion-nav.open {
+    display: block;
+  }
+  @media (max-width: 767.98px) {
+    .notion-nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 56px;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .notion-nav.open {
+      display: flex;
+    }
+    .notion-nav-toggle {
+      display: flex;
+    }
+  }
+</style>
