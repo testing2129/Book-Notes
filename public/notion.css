@@ -337,11 +337,13 @@ body {
   border: none;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
-  gap: 2.5px;
+  flex-direction: row;
+  gap: 5px;
   padding: 8px 6px;
   border-radius: 50%;
   transition: background 0.2s;
+  align-items: center;
+  justify-content: center;
 }
 .notion-style-menu-btn:hover {
   background: #f5f7fa;
@@ -353,6 +355,7 @@ body {
   border-radius: 50%;
   display: block;
 }
+
 .notion-style-menu {
   display: none;
   position: absolute;
@@ -384,8 +387,12 @@ body {
     margin-left: 0.5rem;
   }
   .notion-style-menu {
-    right: 0;
-    left: auto;
-    min-width: 140px;
+    left: 50%;
+    right: auto;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    min-width: 180px;
+    box-shadow: 0 4px 24px rgba(91,124,250,0.13);
+    z-index: 2000;
   }
 }
