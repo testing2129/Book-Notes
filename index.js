@@ -43,7 +43,11 @@ app.get('/', async (req, res) => {
       const doc = response.data.docs[0];
       if (doc && doc.cover_i) {
         coverUrl = `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`;
-      }
+        await pool.query(
+          'UPDATE books SET cover_url = $1 WHERE id = $2',
+          [coverUrl, book.id]
+        );
+      };
     } catch (err) {
       console.log(err);
       coverUrl = null;
