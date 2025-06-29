@@ -1,12 +1,14 @@
 // Hamburger menu and font style toggler for Notion-style Book Notes
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Hamburger menu toggle
   const navToggle = document.getElementById('navToggle');
+  const navOverlay = document.getElementById('navOverlay');
   const notionNav = document.getElementById('notionNav');
+  // Hamburger menu toggle
   if (navToggle && notionNav) {
     navToggle.addEventListener('click', function () {
-      notionNav.classList.toggle('nav-open');
+      navOverlay.classList.toggle('open');
+      notionNav.classList.toggle('hide-when-overlay');
       navToggle.classList.toggle('active');
     });
     // Close nav when clicking outside (mobile UX)
@@ -15,6 +17,15 @@ document.addEventListener('DOMContentLoaded', function () {
         notionNav.classList.remove('nav-open');
         navToggle.classList.remove('active');
       }
+    });
+  }
+  // Optionally, close overlay when a link is clicked
+  if (navOverlay) {
+    navOverlay.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navOverlay.classList.remove('open');
+        notionNav.classList.remove('hide-when-overlay');
+      });
     });
   }
 

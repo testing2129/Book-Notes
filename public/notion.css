@@ -222,6 +222,11 @@ body {
 
 /* Hamburger and font menu styles for mobile only */
 .notion-nav-toggle {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  margin: 0;
+  z-index: 2100;
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -231,8 +236,6 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  margin-left: 1rem;
-  z-index: 1001;
 }
 .notion-nav-toggle-bar {
   width: 26px;
@@ -297,6 +300,8 @@ body {
   }
   .notion-nav-toggle {
     display: flex;
+    top: 0.7rem;
+    right: 0.7rem;
   }
   .notion-title {
     font-size: 2rem;
@@ -308,71 +313,44 @@ body {
   }
 }
 
-.notion-style-menu-wrapper {
-  position: relative;
-  margin-left: 1.2rem;
+/* Overlay menu for Bootstrap-like navigation */
+.notion-nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255,255,255,0.98);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.25s;
 }
-.notion-style-menu-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
+.notion-nav-overlay.open {
   display: flex;
-  flex-direction: row;
-  gap: 5px;
-  padding: 8px 6px;
-  border-radius: 50%;
-  transition: background 0.2s;
+}
+.notion-nav-overlay-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   align-items: center;
   justify-content: center;
+  min-width: 220px;
 }
-.notion-style-menu-btn:hover {
-  background: #f5f7fa;
+.notion-nav-overlay-link {
+  color: #222;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
 }
-.notion-style-dot {
-  width: 5px;
-  height: 5px;
-  background: #888;
-  border-radius: 50%;
-  display: block;
-}
-
-.notion-style-menu {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 2.2rem;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  min-width: 170px;
-  z-index: 100;
-  padding: 0.5rem 0;
-}
-.notion-style-menu.open {
-  display: block;
-}
-.notion-style-option {
-  padding: 0.7rem 1.2rem;
-  cursor: pointer;
-  font-size: 1rem;
-  color: #333;
-  transition: background 0.18s;
-}
-.notion-style-option:hover {
+.notion-nav-overlay-link:hover {
   background: #f5f7fa;
   color: #5b7cfa;
 }
-@media (max-width: 600px) {
-  .notion-style-menu-wrapper {
-    margin-left: 0.5rem;
-  }
-  .notion-style-menu {
-    left: 50%;
-    right: auto;
-    top: 50vh;
-    transform: translate(-50%, -50%);
-    min-width: 180px;
-    box-shadow: 0 4px 24px rgba(91,124,250,0.13);
-    z-index: 2000;
-  }
+.notion-nav.hide-when-overlay {
+  display: none !important;
 }
